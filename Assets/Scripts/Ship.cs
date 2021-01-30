@@ -30,8 +30,6 @@ public class Ship : MonoBehaviour
         
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
 
-        UpdateSprite();
-
         // Testing
         //Direction = Vector2.down;
         //ChangeDirection(ShipDirection.East);
@@ -39,10 +37,10 @@ public class Ship : MonoBehaviour
 
     void UpdateSprite() 
     {
-        if (Mathf.Abs(Direction.x) > Mathf.Abs(Direction.y))
+        if (Mathf.Abs(Rb2d.velocity.x) > Mathf.Abs(Rb2d.velocity.y))
         {
             // use either down/up sprite
-            if (Direction.x > 0)
+            if (Rb2d.velocity.x > 0)
             {
                 thisSpriteRenderer.sprite = GetSprite(ShipDirection.East, Size);
             } else {
@@ -51,7 +49,7 @@ public class Ship : MonoBehaviour
         } else
         {
             // use either left/right sprite
-            if (Direction.y > 0)
+            if (Rb2d.velocity.y > 0)
             {
                 thisSpriteRenderer.sprite = GetSprite(ShipDirection.North, Size);
             }
@@ -66,6 +64,7 @@ public class Ship : MonoBehaviour
     {
         // TODO: Update this after creating WindManager
         Rb2d.velocity = Direction.normalized * BaseSpeed + WindManager.Instance.WindDirection * WindInfluence;
+        UpdateSprite();
     }
 
     public void ChangeDirection(ShipDirection direction)
@@ -109,7 +108,6 @@ public class Ship : MonoBehaviour
         {
             elapsedTime += (TurnSpeed / 100) * Time.deltaTime;
             Direction = Vector2.Lerp(Direction, newDirection, elapsedTime);
-            UpdateSprite();
             yield return null;
         } while (Direction != newDirection);
 
