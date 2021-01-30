@@ -11,6 +11,7 @@ public class Ship : MonoBehaviour
     public Vector2 Direction;
 
     private SpriteRenderer thisSpriteRenderer;
+    private IEnumerator directionChangeCoroutine;
 
     public float TurnSpeed = 1f;
 
@@ -20,7 +21,6 @@ public class Ship : MonoBehaviour
     Sprite GetSprite(ShipDirection dir, ShipSize size)
     {
         string path = "Graphics/Ships/" + size.ToString().ToLower() + "_ship_" + dir.ToString().ToLower();
-        UnityEngine.Debug.Log("Path is " + path);
         return Resources.Load<Sprite>(path);
     }
 
@@ -70,9 +70,14 @@ public class Ship : MonoBehaviour
 
     public void ChangeDirection(ShipDirection direction)
     {
-        var newDirection = GetDirectionFrom(direction);
+        if (directionChangeCoroutine != null)
+        {
+            StopCoroutine(directionChangeCoroutine);
+        }
 
-        StartCoroutine(ChangeDirectionRoutine(newDirection));
+        var newDirection = GetDirectionFrom(direction);
+        directionChangeCoroutine = ChangeDirectionRoutine(newDirection);
+        StartCoroutine(directionChangeCoroutine);
     }
 
     // TODO: Move this?
@@ -107,6 +112,8 @@ public class Ship : MonoBehaviour
             UpdateSprite();
             yield return null;
         } while (Direction != newDirection);
+
+        directionChangeCoroutine = null;
     }
 
     // To be called by the obstacle OnCollisionEnter2D

@@ -20,7 +20,9 @@ public class TargetLockedInput : MonoBehaviour
 
     void UpdatePosition()
     {
-        transform.position = Controller.TargetShip.transform.position;
+        if (Controller.TargetShip) { 
+            transform.position = Controller.TargetShip.transform.position;
+        }
     }
 
     void ProcessTargetInput()
