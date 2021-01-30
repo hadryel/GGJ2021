@@ -16,7 +16,7 @@ public class Ship : MonoBehaviour
     public float TurnSpeed = 1f;
 
     Rigidbody2D Rb2d;
-
+    public ShipSpawner Spawner;
 
     Sprite GetSprite(ShipDirection dir, ShipSize size)
     {

@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class ShipSpawner : MonoBehaviour
 {
-    public Vector3 UpperLeftLimit;
     public Vector3 UpperRightLimit;
     public Vector3 LowerLeftLimit;
-    public Vector3 LowerRightLimit;
 
     public float MarginOffset = 3f;
     public GameObject ShipPrefab;
 
     void Start()
     {
-        SpawnNorth(ShipPrefab);
-        SpawnSouth(ShipPrefab);
-        SpawnEast(ShipPrefab);
-        SpawnWest(ShipPrefab);
+        SpawnDirection(ShipPrefab, ShipDirection.North);
+        SpawnDirection(ShipPrefab, ShipDirection.South);
+        SpawnDirection(ShipPrefab, ShipDirection.East);
+        SpawnDirection(ShipPrefab, ShipDirection.West);
     }
 
     void Update()
@@ -25,39 +23,35 @@ public class ShipSpawner : MonoBehaviour
 
     }
 
-    public void SpawnNorth(GameObject shipGO)
+    public void SpawnDirection(GameObject shipPrefab, ShipDirection direction)
     {
-        Vector2 position = new Vector2(Random.Range(UpperLeftLimit.x + MarginOffset, UpperRightLimit.x - MarginOffset), UpperLeftLimit.y);
+        Vector2 position = Vector2.zero;
 
-        var ship = Instantiate(shipGO, position, Quaternion.identity);
+        switch (direction)
+        {
+            case ShipDirection.North:
+                position = new Vector2(Random.Range(LowerLeftLimit.x + MarginOffset, UpperRightLimit.x - MarginOffset), UpperRightLimit.y);
+                break;
+            case ShipDirection.South:
+                position = new Vector2(Random.Range(LowerLeftLimit.x + MarginOffset, UpperRightLimit.x - MarginOffset), LowerLeftLimit.y);
+                break;
+            case ShipDirection.East:
+                position = new Vector2(UpperRightLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
+                break;
+            case ShipDirection.West:
+                position = new Vector2(LowerLeftLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
+                break;
+        }
 
-        ship.GetComponent<Ship>().Direction = Ship.GetDirectionFrom(ShipDirection.South);
+        Spawn(shipPrefab, position, direction);
     }
 
-    public void SpawnSouth(GameObject shipGO)
+    void Spawn(GameObject shipPrefab, Vector2 position, ShipDirection direction)
     {
-        Vector2 position = new Vector2(Random.Range(LowerLeftLimit.x + MarginOffset, LowerRightLimit.x - MarginOffset), LowerLeftLimit.y);
+        var shipGO = Instantiate(shipPrefab, position, Quaternion.identity);
 
-        var ship = Instantiate(shipGO, position, Quaternion.identity);
-
-        ship.GetComponent<Ship>().Direction = Ship.GetDirectionFrom(ShipDirection.North);
-    }
-
-    public void SpawnEast(GameObject shipGO)
-    {
-        Vector2 position = new Vector2(UpperRightLimit.x, Random.Range(LowerRightLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
-
-        var ship = Instantiate(shipGO, position, Quaternion.identity);
-
-        ship.GetComponent<Ship>().Direction = Ship.GetDirectionFrom(ShipDirection.West);
-    }
-
-    public void SpawnWest(GameObject shipGO)
-    {
-        Vector2 position = new Vector2(UpperLeftLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperLeftLimit.y - MarginOffset));
-
-        var ship = Instantiate(shipGO, position, Quaternion.identity);
-
-        ship.GetComponent<Ship>().Direction = Ship.GetDirectionFrom(ShipDirection.East);
+        var ship = shipGO.GetComponent<Ship>();
+        ship.Direction = Ship.GetDirectionFrom(direction);
+        ship.Spawner = this;
     }
 }
