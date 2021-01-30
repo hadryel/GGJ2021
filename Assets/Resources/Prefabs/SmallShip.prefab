@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1
   WindInfluence: 0.5
+  Size: 0
   Direction: {x: 0, y: 0}
   TurnSpeed: 5
 --- !u!50 &6063114132882198532

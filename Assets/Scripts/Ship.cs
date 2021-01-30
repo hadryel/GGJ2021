@@ -1,24 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
     public float BaseSpeed = 2f;
     public float WindInfluence = 0f;
+    public ShipSize Size = ShipSize.Small;
     public Vector2 Direction;
+
+    private SpriteRenderer thisSpriteRenderer;
 
     public float TurnSpeed = 1f;
 
     Rigidbody2D Rb2d;
 
+
+    Sprite GetSprite(ShipDirection dir, ShipSize size)
+    {
+        string path = "Graphics/Ships/" + size.ToString().ToLower() + "_ship_" + dir.ToString().ToLower();
+        UnityEngine.Debug.Log("Path is " + path);
+        return Resources.Load<Sprite>(path);
+    }
+
     void Start()
     {
         Rb2d = GetComponent<Rigidbody2D>();
+        
+        thisSpriteRenderer = GetComponent<SpriteRenderer>();
+
+        UpdateSprite();
 
         // Testing
         //Direction = Vector2.down;
         //ChangeDirection(ShipDirection.East);
+    }
+
+    void UpdateSprite() 
+    {
+        if (Mathf.Abs(Direction.x) > Mathf.Abs(Direction.y))
+        {
+            // use either down/up sprite
+            if (Direction.x > 0)
+            {
+                thisSpriteRenderer.sprite = GetSprite(ShipDirection.East, Size);
+            } else {
+                thisSpriteRenderer.sprite = GetSprite(ShipDirection.West, Size);
+            }
+        } else
+        {
+            // use either left/right sprite
+            if (Direction.y > 0)
+            {
+                thisSpriteRenderer.sprite = GetSprite(ShipDirection.North, Size);
+            }
+            else
+            {
+                thisSpriteRenderer.sprite = GetSprite(ShipDirection.South, Size);
+            }
+        }
     }
 
     void Update()
@@ -63,6 +104,7 @@ public class Ship : MonoBehaviour
         {
             elapsedTime += (TurnSpeed / 100) * Time.deltaTime;
             Direction = Vector2.Lerp(Direction, newDirection, elapsedTime);
+            UpdateSprite();
             yield return null;
         } while (Direction != newDirection);
     }
@@ -80,4 +122,11 @@ public enum ShipDirection
     South,
     East,
     West
+}
+
+public enum ShipSize
+{
+    Small,
+    Medium,
+    Big
 }
