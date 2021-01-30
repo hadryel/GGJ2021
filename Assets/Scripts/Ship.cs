@@ -64,7 +64,6 @@ public class Ship : MonoBehaviour
 
     void Update()
     {
-        // TODO: Update this after creating WindManager
         Rb2d.velocity = Direction.normalized * BaseSpeed + WindManager.Instance.WindDirection * WindInfluence;
     }
 
@@ -119,7 +118,22 @@ public class Ship : MonoBehaviour
     // To be called by the obstacle OnCollisionEnter2D
     public void ObstacleCollision()
     {
+        // TODO: Instantiate ShipWreckage here and destroy this object
+        Destroy(gameObject);
+    }
 
+    public void ShipCollision()
+    {
+        // TODO: Instantiate ShipWreckage here and destroy this object
+        Destroy(gameObject);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ship"))
+        {
+            collision.gameObject.GetComponent<Ship>().ShipCollision();
+        }
     }
 }
 
