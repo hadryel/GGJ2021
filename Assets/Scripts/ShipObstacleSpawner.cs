@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class ShipObstacleSpawner : MonoBehaviour
 {
-    public GameObject[] RockPrefabs;
+    public float Range = 1f;
 
     void Start()
     {
-        SpawnRock(RockPrefabs[0], new Vector2(12, 5));
-        SpawnRock(RockPrefabs[1], new Vector2(12, -5));
-        SpawnRock(RockPrefabs[2], new Vector2(-12, 5));
+        string path = "Prefabs/Rocks/";
+        var rocks = Resources.LoadAll<GameObject>(path);
+
+        SpawnRock(rocks[Random.Range(0, rocks.Length)]);
     }
 
-    void Update()
+    public void SpawnRock(GameObject rockPrefab)
     {
-        
-    }
-
-    public void SpawnRock(GameObject rockPrefab, Vector2 position)
-    {
-        var rockGO = Instantiate(rockPrefab, position, Quaternion.identity);
-
-        //var ship = shipGO.GetComponent<Ship>();
-        //ship.Direction = Ship.GetDirectionFrom(direction);
-        //ship.Spawner = this;
+        Vector3 offset = new Vector2(Random.Range(-Range, Range), Random.Range(-Range, Range));
+        var rockGO = Instantiate(rockPrefab, transform.position + offset, Quaternion.identity);
+        rockGO.transform.parent = transform;
     }
 }

@@ -19,7 +19,7 @@ TagManager:
   - Targethandler
   - ShipDestiny
   - ShipObstacle
-  - 
+  - Lighthouse
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Above
+    uniqueID: 3550832769
     locked: 0

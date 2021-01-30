@@ -10,10 +10,8 @@ public class CameraController : MonoBehaviour
     private Vector3 Velocity = Vector3.zero;
     private Vector3 Offset;
 
-    public Vector3 UpperLeftLimit;
     public Vector3 UpperRightLimit;
     public Vector3 LowerLeftLimit;
-    public Vector3 LowerRightLimit;
 
     void Start()
     {
@@ -22,10 +20,15 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        MoveToTarget();
+    }
+
+    void MoveToTarget()
+    {
         Vector3 targetPosition = Target.transform.TransformPoint(Offset);
 
-        var x = Mathf.Clamp(targetPosition.x, UpperLeftLimit.x, UpperRightLimit.x);
-        var y = Mathf.Clamp(targetPosition.y, LowerLeftLimit.y, UpperLeftLimit.y);
+        var x = Mathf.Clamp(targetPosition.x, LowerLeftLimit.x, UpperRightLimit.x);
+        var y = Mathf.Clamp(targetPosition.y, LowerLeftLimit.y, UpperRightLimit.y);
 
         targetPosition = new Vector3(x, y, Offset.z);
 

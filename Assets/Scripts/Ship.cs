@@ -15,6 +15,8 @@ public class Ship : MonoBehaviour
 
     public float TurnSpeed = 1f;
 
+    public float Life = 1f;
+
     Rigidbody2D Rb2d;
     public ShipSpawner Spawner;
 
@@ -29,10 +31,6 @@ public class Ship : MonoBehaviour
         Rb2d = GetComponent<Rigidbody2D>();
         
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
-
-        // Testing
-        //Direction = Vector2.down;
-        //ChangeDirection(ShipDirection.East);
     }
 
     void UpdateSprite() 
