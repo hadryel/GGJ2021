@@ -8,14 +8,14 @@ public class ShipSpawner : MonoBehaviour
     public Vector3 LowerLeftLimit;
 
     public float MarginOffset = 3f;
-    public GameObject ShipPrefab;
+    public GameObject[] ShipPrefabs;
 
     void Start()
     {
-        SpawnDirection(ShipPrefab, ShipDirection.North);
-        SpawnDirection(ShipPrefab, ShipDirection.South);
-        SpawnDirection(ShipPrefab, ShipDirection.East);
-        SpawnDirection(ShipPrefab, ShipDirection.West);
+        SpawnDirection(ShipPrefabs[0], ShipDirection.North);
+        SpawnDirection(ShipPrefabs[1], ShipDirection.South);
+        SpawnDirection(ShipPrefabs[2], ShipDirection.East);
+        SpawnDirection(ShipPrefabs[2], ShipDirection.West);
     }
 
     void Update()

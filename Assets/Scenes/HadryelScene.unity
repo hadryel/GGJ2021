@@ -1067,13 +1067,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9c7f0736777c549a26b95c74a22d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpperLeftLimit: {x: -20, y: 12, z: 0}
   UpperRightLimit: {x: 20, y: 12, z: 0}
   LowerLeftLimit: {x: -20, y: -12, z: 0}
-  LowerRightLimit: {x: 20, y: -12, z: 0}
-  MarginOffset: 3
-  ShipPrefab: {fileID: 6063114132882198528, guid: 194aa1ac86795aa46873044bd3a3313e,
-    type: 3}
+  MarginOffset: 2
+  ShipPrefabs:
+  - {fileID: 6063114132882198528, guid: 194aa1ac86795aa46873044bd3a3313e, type: 3}
+  - {fileID: 6063114132882198528, guid: 812235b6b2bedba468104b9c7d2ad30a, type: 3}
+  - {fileID: 6063114132882198528, guid: e25454baf494600458d252b3c3bfdd3f, type: 3}
 --- !u!4 &721093224
 Transform:
   m_ObjectHideFlags: 0
@@ -1519,6 +1519,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WindDirection: {x: 0, y: 0}
+  maxChange: 0.2
+  updateIntervalInSeconds: 4
+  suddenChangeProbability: 0.2
 --- !u!4 &1001912407
 Transform:
   m_ObjectHideFlags: 0
