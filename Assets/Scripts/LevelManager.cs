@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
 
     public Text ScoreUIText;
     public Text FinalScoreText;
+    public Text FunnyFinalMessageText;
+    public Text YouLostText;
     string SCORE_MESSAGE = "Saved {0} ships";
 
     public Text DeathsUIText;
@@ -24,6 +26,8 @@ public class LevelManager : MonoBehaviour
     public OnboardingManager Onboarding;
 
     public GameObject ScoreSound;
+
+    public string[] YouLostPhrases;
 
     void Start()
     {
@@ -48,7 +52,7 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void PlayAgain()
@@ -84,5 +88,45 @@ public class LevelManager : MonoBehaviour
 
         LosePanel.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void SetupFinalPhrase()
+    {
+        if (Score <= 4)
+        {
+            FunnyFinalMessageText.text = "Few sailors survived to tell the story";
+        }
+        else if (Score <= 10)
+        {
+            FunnyFinalMessageText.text = "This keeper was caught Between the Devil and the Deep Blue Sea";
+
+        }
+        else if (Score <= 15)
+        {
+            FunnyFinalMessageText.text = "These odds are not enlighting";
+
+        }
+        else if (Score <= 20)
+        {
+            FunnyFinalMessageText.text = "This is a Lighthome, not a Lighthouse";
+
+        }
+        else
+        {
+            FunnyFinalMessageText.text = "\"Damn you, keeper they said...\" No one saw you fit for the job anyway.";
+        }
+
+        YouLostText.text = YouLostPhrases[Random.Range(0, YouLostPhrases.Length)];
+    }
+
+    public void AddLife()
+    {
+        _Deaths++;
+        DeathsUIText.text = _Deaths.ToString();
+    }
+
+    public int GetLifes()
+    {
+        return _Deaths;
     }
 }
