@@ -12,6 +12,8 @@ public class OnboardingGuide : MonoBehaviour
         if (!Completed)
         {
             TextGO.SetActive(true);
+            GameObject.Find("BigIsland").GetComponentInChildren<TargetFlag>(true).gameObject.SetActive(true);
+            GameObject.Find("SmallIsland").GetComponentInChildren<TargetFlag>(true).gameObject.SetActive(true);
         }
         //else
         //    NextStep();
@@ -20,6 +22,8 @@ public class OnboardingGuide : MonoBehaviour
     private void OnDisable()
     {
         TextGO.SetActive(false);
+        GameObject.Find("BigIsland").GetComponentInChildren<TargetFlag>(true).gameObject.SetActive(false);
+        GameObject.Find("SmallIsland").GetComponentInChildren<TargetFlag>(true).gameObject.SetActive(false);
     }
 
     void Start()

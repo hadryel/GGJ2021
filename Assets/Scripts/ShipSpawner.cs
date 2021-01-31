@@ -31,11 +31,6 @@ public class ShipSpawner : MonoBehaviour
 
     void Start()
     {
-        SpawnDirection(ShipPrefabs[0], ShipDirection.North);
-        SpawnDirection(ShipPrefabs[1], ShipDirection.South);
-        SpawnDirection(ShipPrefabs[2], ShipDirection.East);
-        SpawnDirection(ShipPrefabs[2], ShipDirection.West);
-
         StartCoroutine(ShipSpawnerRoutine());
     }
 

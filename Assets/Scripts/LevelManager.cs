@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
 
     public OnboardingManager Onboarding;
 
+    public GameObject ScoreSound;
+
     void Start()
     {
         if (Instance == null)
@@ -58,6 +60,8 @@ public class LevelManager : MonoBehaviour
 
     public void ScorePoint()
     {
+        ScoreSound.SetActive(false);
+        ScoreSound.SetActive(true);
         Score++;
         ScoreUIText.text = Score.ToString();
     }
