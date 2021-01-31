@@ -142,6 +142,9 @@ MonoBehaviour:
   Range: 1
   LifePrefab: {fileID: 7926476834622833234, guid: 9fb2b29bb5cce6e48a64a6eae65fc916,
     type: 3}
+  LimitOfSpawnedLifes: 1
+  CurrentSpawnedLifes: 0
+  SpawnLifeTryDelay: 10
 --- !u!1 &2229405589505275174
 GameObject:
   m_ObjectHideFlags: 0

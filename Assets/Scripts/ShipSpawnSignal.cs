@@ -9,8 +9,8 @@ public class ShipSpawnSignal : MonoBehaviour
 
     void Start()
     {
-        var leftLimit = Camera.main.transform.position.x - 9f;
-        var rightLimit = Camera.main.transform.position.x + 9f;
+        var leftLimit = Camera.main.transform.position.x - 6f;
+        var rightLimit = Camera.main.transform.position.x + 6f;
         var x = Mathf.Clamp(TargetShip.transform.position.x, leftLimit, rightLimit);
         transform.position = new Vector3(x, TargetShip.transform.position.y, 0f);
     }
@@ -24,8 +24,8 @@ public class ShipSpawnSignal : MonoBehaviour
 
         if(TargetShip != null)
         {
-            var leftLimit = Camera.main.transform.position.x - 9f;
-            var rightLimit = Camera.main.transform.position.x + 9f;
+            var leftLimit = Camera.main.transform.position.x - 5f;
+            var rightLimit = Camera.main.transform.position.x + 5f;
             var x = Mathf.Clamp(TargetShip.transform.position.x, leftLimit, rightLimit);
             transform.position = new Vector3(x, TargetShip.transform.position.y, 0f);
         }

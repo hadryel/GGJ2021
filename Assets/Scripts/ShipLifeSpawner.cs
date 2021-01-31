@@ -9,7 +9,8 @@ public class ShipLifeSpawner : MonoBehaviour
     public int LimitOfSpawnedLifes = 1;
     public int CurrentSpawnedLifes = 0;
 
-    public float SpawnLifeTryDelay = 2f;
+    public float SpawnLifeTryDelay = 10f;
+    public float MinimumSpawnDelay = 20f;
     float CurrentTryTime;
 
     void Start()
@@ -21,10 +22,10 @@ public class ShipLifeSpawner : MonoBehaviour
     {
         CurrentTryTime -= Time.deltaTime;
 
-        if (LevelManager.Instance.GetLifes() < LevelManager.Instance.Deaths && CurrentSpawnedLifes < 1 && CurrentTryTime <= 0)
+        if (Time.timeSinceLevelLoad > MinimumSpawnDelay && LevelManager.Instance.GetLifes() < LevelManager.Instance.Deaths && CurrentSpawnedLifes < 1 && CurrentTryTime <= 0)
         {
             CurrentTryTime = SpawnLifeTryDelay;
-            if (Random.Range(0f, 1f) > 0.3f)
+            if (Random.Range(0f, 1f) > 0.5f)
                 SpawnRandomLife();
         }
     }

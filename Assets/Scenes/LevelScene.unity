@@ -590,6 +590,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShipLifeSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2229405589387636938, guid: 5ca26e2ea24217649a1da54551e6bc50,
+        type: 3}
+      propertyPath: LifePrefab
+      value: 
+      objectReference: {fileID: 1389076074947719466, guid: 9fb2b29bb5cce6e48a64a6eae65fc916,
+        type: 3}
     - target: {fileID: 2229405589387636939, guid: 5ca26e2ea24217649a1da54551e6bc50,
         type: 3}
       propertyPath: m_LocalPosition.x
