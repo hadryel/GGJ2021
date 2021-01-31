@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseSpeed: 1
-  WindInfluence: 0.5
+  WindInfluence: 0.3
   Size: 2
   Direction: {x: 0, y: 0}
   TurnSpeed: 5
@@ -108,6 +108,7 @@ MonoBehaviour:
   Spawner: {fileID: 0}
   WreckagePrefab: {fileID: 3856183057365539154, guid: e196f6aa9d610f84297e7f2b0d3aed0d,
     type: 3}
+  Spotlight: {fileID: 0}
 --- !u!50 &6063114132882198532
 Rigidbody2D:
   serializedVersion: 4
