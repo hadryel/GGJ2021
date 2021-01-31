@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ship
+  - SpotlightLimit
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - ShipDestiny
   - ShipObstacle
   - Lighthouse
-  - 
+  - SpawnSignal
   - 
   - 
   - 
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Above
     uniqueID: 3550832769
+    locked: 0
+  - name: Fog
+    uniqueID: 1366750561
     locked: 0
   - name: UI
     uniqueID: 1907139425

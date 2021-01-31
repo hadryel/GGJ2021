@@ -16,11 +16,14 @@ public class Ship : MonoBehaviour
     public float TurnSpeed = 1f;
 
     public float Life = 1f;
+    public float CommandCooldown = 2f;
+    public float LastCommandTime;
 
     Rigidbody2D Rb2d;
     public ShipSpawner Spawner;
 
     public GameObject WreckagePrefab;
+    public SpotlightController Spotlight;
 
     Sprite GetSprite(ShipDirection dir, ShipSize size)
     {
@@ -33,6 +36,8 @@ public class Ship : MonoBehaviour
         Rb2d = GetComponent<Rigidbody2D>();
 
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
+
+        LastCommandTime = 0f;
     }
 
     void UpdateSprite()
@@ -71,6 +76,10 @@ public class Ship : MonoBehaviour
 
     public void ChangeDirection(ShipDirection direction)
     {
+        LastCommandTime = Time.time;
+
+        StartCoroutine(NoSignalRoutine());
+
         if (directionChangeCoroutine != null)
         {
             StopCoroutine(directionChangeCoroutine);
@@ -81,7 +90,16 @@ public class Ship : MonoBehaviour
         StartCoroutine(directionChangeCoroutine);
     }
 
-    // TODO: Move this?
+    // TODO: Change this to handle destruction
+    IEnumerator NoSignalRoutine()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(CommandCooldown);
+
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     public static Vector2 GetDirectionFrom(ShipDirection direction)
     {
         var newDirection = Vector2.zero;

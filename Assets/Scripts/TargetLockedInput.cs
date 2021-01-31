@@ -13,6 +13,9 @@ public class TargetLockedInput : MonoBehaviour
 
     void Update()
     {
+        if (Controller.TargetShip == null)
+            FreeMovement();
+
         UpdatePosition();
         ProcessTargetInput();
         ProcessDirectionInput();
@@ -20,7 +23,8 @@ public class TargetLockedInput : MonoBehaviour
 
     void UpdatePosition()
     {
-        if (Controller.TargetShip) { 
+        if (Controller.TargetShip)
+        {
             transform.position = Controller.TargetShip.transform.position;
         }
     }
@@ -35,21 +39,29 @@ public class TargetLockedInput : MonoBehaviour
 
     void ProcessDirectionInput()
     {
+        if (Controller.TargetShip == null)
+            return;
+
+        Ship targetShip = Controller.TargetShip.GetComponent<Ship>();
+
+        if (Time.time - targetShip.LastCommandTime < targetShip.CommandCooldown)
+        {
+            return;
+        }
+
         if (Input.GetButtonDown("Vertical"))
         {
             var direction = (Input.GetAxis("Vertical") > 0) ? ShipDirection.North : ShipDirection.South;
-            Controller.TargetShip.GetComponent<Ship>().ChangeDirection(direction);
-            FreeMovement();
+            targetShip.ChangeDirection(direction);
         }
         else if (Input.GetButtonDown("Horizontal"))
         {
             var direction = (Input.GetAxis("Horizontal") > 0) ? ShipDirection.East : ShipDirection.West;
-            Controller.TargetShip.GetComponent<Ship>().ChangeDirection(direction);
-            FreeMovement();
+            targetShip.ChangeDirection(direction);
         }
     }
 
-    void FreeMovement()
+    public void FreeMovement()
     {
         GetComponent<FreeMovementInput>().enabled = true;
         GetComponent<TargetLockedInput>().enabled = false;

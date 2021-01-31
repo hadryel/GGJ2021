@@ -16,4 +16,13 @@ public class SpotlightController : MonoBehaviour
     {
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("SpotlightLimit"))
+        {
+            if (TargetShip != null && GetComponent<TargetLockedInput>().enabled)
+                GetComponent<TargetLockedInput>().FreeMovement();
+        }
+    }
 }

@@ -10,6 +10,8 @@ public class ShipSpawner : MonoBehaviour
     public float MarginOffset = 3f;
     public GameObject[] ShipPrefabs;
 
+    public GameObject SpawnSignalPrefab;
+
     void Start()
     {
         SpawnDirection(ShipPrefabs[0], ShipDirection.North);
@@ -53,5 +55,13 @@ public class ShipSpawner : MonoBehaviour
         var ship = shipGO.GetComponent<Ship>();
         ship.Direction = Ship.GetDirectionFrom(direction);
         ship.Spawner = this;
+
+        SpawnSignal(shipGO);
+    }
+
+    void SpawnSignal(GameObject shipGO)
+    {
+        var signalGO = Instantiate(SpawnSignalPrefab, Vector3.zero, Quaternion.identity);
+        signalGO.GetComponent<ShipSpawnSignal>().TargetShip = shipGO;
     }
 }
