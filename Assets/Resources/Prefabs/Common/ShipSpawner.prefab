@@ -52,14 +52,19 @@ MonoBehaviour:
   - {fileID: 6063114132882198528, guid: e25454baf494600458d252b3c3bfdd3f, type: 3}
   SpawnSignalPrefab: {fileID: 1051737086133149092, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
     type: 3}
-  shipsLimit: 01000000020000000400000006000000
+  shipsLimit: 010000000200000003000000040000000500000006000000
   secondsElapsedForShipsLimitTier:
-  - 10
-  - 20
-  - 40
-  - 60
+  - 16
+  - 32
+  - 64
+  - 92
+  - 180
+  - 240
   secondsIntervalForEachShip:
-  - 3
-  - 12
-  - 10
+  - 2
+  - 4
+  - 6
   - 8
+  - 6
+  - 5
+  currentTier: 0

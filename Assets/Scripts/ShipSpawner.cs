@@ -16,6 +16,8 @@ public class ShipSpawner : MonoBehaviour
     public float[] secondsElapsedForShipsLimitTier; // seconds to consider this limit, this array size must be the same as shipsLimit
     public float[]   secondsIntervalForEachShip;    // interval between ships spawning for this tier
 
+    public int currentTier; // for debugging
+
     private int getNdxForCurrentTier()
     {
         float now = Time.timeSinceLevelLoad;
@@ -32,6 +34,11 @@ public class ShipSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(ShipSpawnerRoutine());
+    }
+
+    void Update()
+    {
+        currentTier = getNdxForCurrentTier();
     }
 
     IEnumerator ShipSpawnerRoutine()
