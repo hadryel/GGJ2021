@@ -147,15 +147,15 @@ public class Ship : MonoBehaviour
     public void ObstacleCollision()
     {
         NumberOfShips--;
-        RenderCollision();
         Destroy(gameObject);
+        RenderCollision();
     }
 
     public void ShipCollision()
     {
         NumberOfShips--;
-        RenderCollision();
         Destroy(gameObject);
+        RenderCollision();
     }
 
     public void RenderCollision()

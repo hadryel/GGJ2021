@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4869947e43e2d47438ede5082557f7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WindInfluence: 0.2
+  WindInfluence: 0.6
 --- !u!114 &-6380126535218638529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b18ec7e4be23446b56fd5610079e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Duration: 10
+  Duration: 16
 --- !u!1 &1781040498298464944
 GameObject:
   m_ObjectHideFlags: 0
