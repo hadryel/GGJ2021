@@ -91,6 +91,7 @@ public class ShipSpawner : MonoBehaviour
                 }
                 break;
             case ShipDirection.East:
+                position = new Vector2(UpperRightLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
                 while (position.y > 5.7 && position.y < 8.67) { 
                     position = new Vector2(UpperRightLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
                 }
