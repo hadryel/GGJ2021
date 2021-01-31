@@ -101,7 +101,10 @@ MonoBehaviour:
   Size: 0
   Direction: {x: 0, y: 0}
   TurnSpeed: 5
+  Life: 1
   Spawner: {fileID: 0}
+  WreckagePrefab: {fileID: 1781040498275276700, guid: bde485cc689270841b0decccbab64e02,
+    type: 3}
 --- !u!50 &6063114132882198532
 Rigidbody2D:
   serializedVersion: 4

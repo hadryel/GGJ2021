@@ -101,7 +101,10 @@ MonoBehaviour:
   Size: 1
   Direction: {x: 0, y: 0}
   TurnSpeed: 5
+  Life: 1
   Spawner: {fileID: 0}
+  WreckagePrefab: {fileID: 5603851258361777415, guid: fd9a49be6951afb44a74bb5364340cdb,
+    type: 3}
 --- !u!50 &6063114132882198532
 Rigidbody2D:
   serializedVersion: 4
@@ -136,6 +139,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.076013185, y: 0.0038016352}
-  m_Size: {x: 0.79290897, y: 0.5040523}
+  m_Offset: {x: 0.04, y: -0.2}
+  m_Size: {x: 1.38, y: 0.55554944}
   m_Direction: 1

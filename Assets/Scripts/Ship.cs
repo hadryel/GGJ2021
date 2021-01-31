@@ -20,6 +20,8 @@ public class Ship : MonoBehaviour
     Rigidbody2D Rb2d;
     public ShipSpawner Spawner;
 
+    public GameObject WreckagePrefab;
+
     Sprite GetSprite(ShipDirection dir, ShipSize size)
     {
         string path = "Graphics/Ships/" + size.ToString().ToLower() + "_ship_" + dir.ToString().ToLower();
@@ -29,11 +31,11 @@ public class Ship : MonoBehaviour
     void Start()
     {
         Rb2d = GetComponent<Rigidbody2D>();
-        
+
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void UpdateSprite() 
+    void UpdateSprite()
     {
         if (Mathf.Abs(Rb2d.velocity.x) > Mathf.Abs(Rb2d.velocity.y))
         {
@@ -41,10 +43,13 @@ public class Ship : MonoBehaviour
             if (Rb2d.velocity.x > 0)
             {
                 thisSpriteRenderer.sprite = GetSprite(ShipDirection.East, Size);
-            } else {
+            }
+            else
+            {
                 thisSpriteRenderer.sprite = GetSprite(ShipDirection.West, Size);
             }
-        } else
+        }
+        else
         {
             // use either left/right sprite
             if (Rb2d.velocity.y > 0)
@@ -114,19 +119,25 @@ public class Ship : MonoBehaviour
     // To be called by the obstacle OnCollisionEnter2D
     public void ObstacleCollision()
     {
-        // TODO: Instantiate ShipWreckage here and destroy this object
+        RenderCollision();
         Destroy(gameObject);
     }
 
     public void ShipCollision()
     {
-        // TODO: Instantiate ShipWreckage here and destroy this object
+        RenderCollision();
         Destroy(gameObject);
+    }
+
+    public void RenderCollision()
+    {
+        // TODO: Instantiate particles as well
+        Instantiate(WreckagePrefab, transform.position, Quaternion.identity);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Ship"))
+        if (collision.gameObject.CompareTag("Ship"))
         {
             collision.gameObject.GetComponent<Ship>().ShipCollision();
         }
