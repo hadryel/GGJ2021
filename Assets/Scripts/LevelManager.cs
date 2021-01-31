@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     public int Deaths = 3;
 
     int _Deaths;
-    int _Score;
+    public int Score;
 
     public GameObject LosePanel;
 
@@ -21,10 +21,14 @@ public class LevelManager : MonoBehaviour
 
     public Text DeathsUIText;
 
+    public OnboardingManager Onboarding;
+
     void Start()
     {
         if (Instance == null)
             Instance = this;
+
+        Onboarding = GameObject.Find("Onboarding").GetComponent<OnboardingManager>();
 
         Reset();
     }
@@ -34,8 +38,10 @@ public class LevelManager : MonoBehaviour
         LosePanel.SetActive(false);
 
         _Deaths = Deaths;
-        _Score = 0;
-        ScoreUIText.text = _Score.ToString();
+        Score = 0;
+        ScoreUIText.text = Score.ToString();
+
+        Onboarding.Restart();
     }
 
     void Update()
@@ -52,8 +58,8 @@ public class LevelManager : MonoBehaviour
 
     public void ScorePoint()
     {
-        _Score++;
-        ScoreUIText.text = _Score.ToString();
+        Score++;
+        ScoreUIText.text = Score.ToString();
     }
 
     public void ReducePoint()
@@ -68,7 +74,9 @@ public class LevelManager : MonoBehaviour
 
     public void LoseGame()
     {
-        FinalScoreText.text = string.Format(SCORE_MESSAGE, _Score);
+        FinalScoreText.text = string.Format(SCORE_MESSAGE, Score);
+
+        Onboarding.InterruptOnboarding();
 
         LosePanel.SetActive(true);
         Time.timeScale = 0;

@@ -478,6 +478,105 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186723868}
   m_CullTransparentMesh: 0
+--- !u!1001 &200073076
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3005062760240786973, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937288, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: Spotlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 366.55194
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 444.55585
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -42.74396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937289, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937290, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: Spotlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937291, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: Spotlight
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937291, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937295, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: m_Name
+      value: Onboarding
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005062760828937332, guid: 91b09f751c8476b4a8ff8743d608b299,
+        type: 3}
+      propertyPath: Spotlight
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91b09f751c8476b4a8ff8743d608b299, type: 3}
 --- !u!1 &202912303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,8 +1439,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1907139425
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b169bce740910be48b24ab41c7f91d08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
