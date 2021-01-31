@@ -25,6 +25,8 @@ public class Ship : MonoBehaviour
     public GameObject WreckagePrefab;
     public SpotlightController Spotlight;
 
+    static private int NumberOfShips = 0;
+
     Sprite GetSprite(ShipDirection dir, ShipSize size)
     {
         string path = "Graphics/Ships/" + size.ToString().ToLower() + "_ship_" + dir.ToString().ToLower();
@@ -38,6 +40,8 @@ public class Ship : MonoBehaviour
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
 
         LastCommandTime = 0f;
+
+        NumberOfShips++;
     }
 
     void UpdateSprite()
@@ -72,6 +76,11 @@ public class Ship : MonoBehaviour
     {
         Rb2d.velocity = Direction.normalized * BaseSpeed + WindManager.Instance.WindDirection * WindInfluence;
         UpdateSprite();
+    }
+
+    static public int CountShips()
+    {
+        return NumberOfShips;
     }
 
     public void ChangeDirection(ShipDirection direction)
@@ -137,12 +146,14 @@ public class Ship : MonoBehaviour
     // To be called by the obstacle OnCollisionEnter2D
     public void ObstacleCollision()
     {
+        NumberOfShips--;
         RenderCollision();
         Destroy(gameObject);
     }
 
     public void ShipCollision()
     {
+        NumberOfShips--;
         RenderCollision();
         Destroy(gameObject);
     }

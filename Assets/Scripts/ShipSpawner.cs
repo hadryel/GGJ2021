@@ -12,18 +12,61 @@ public class ShipSpawner : MonoBehaviour
 
     public GameObject SpawnSignalPrefab;
 
+    public int[]   shipsLimit;                      // number of ships for each of the timesteps defined below
+    public float[] secondsElapsedForShipsLimitTier; // seconds to consider this limit, this array size must be the same as shipsLimit
+    public float[]   secondsIntervalForEachShip;    // interval between ships spawning for this tier
+
+    private int getNdxForCurrentTier()
+    {
+        float now = Time.timeSinceLevelLoad;
+        for (int i = 0; i < secondsElapsedForShipsLimitTier.Length; i++)
+        {
+            if (now < secondsElapsedForShipsLimitTier[i])
+            {
+                return i;
+            }
+        }
+        return secondsElapsedForShipsLimitTier.Length - 1;
+    }
+
     void Start()
     {
         SpawnDirection(ShipPrefabs[0], ShipDirection.North);
         SpawnDirection(ShipPrefabs[1], ShipDirection.South);
         SpawnDirection(ShipPrefabs[2], ShipDirection.East);
         SpawnDirection(ShipPrefabs[2], ShipDirection.West);
+
+        StartCoroutine(ShipSpawnerRoutine());
     }
 
-    void Update()
+    IEnumerator ShipSpawnerRoutine()
     {
+        while (true)
+        {
+            int tierNdx = getNdxForCurrentTier();
+            yield return new WaitForSeconds(secondsIntervalForEachShip[tierNdx]);
+            if (Ship.CountShips() < shipsLimit[tierNdx])
+            {
+                float rnd = Random.Range(0f, 1f);
+                int size = Random.Range(0, 3);
 
+                if (rnd < 0.25f)
+                {
+                    SpawnDirection(ShipPrefabs[size], ShipDirection.North);
+                } else if (rnd < 0.5f)
+                {
+                    SpawnDirection(ShipPrefabs[size], ShipDirection.South);
+                } else if (rnd < 0.75f)
+                {
+                    SpawnDirection(ShipPrefabs[size], ShipDirection.East);
+                } else
+                {
+                    SpawnDirection(ShipPrefabs[size], ShipDirection.West);
+                }
+            }
+        }
     }
+
 
     public void SpawnDirection(GameObject shipPrefab, ShipDirection direction)
     {
