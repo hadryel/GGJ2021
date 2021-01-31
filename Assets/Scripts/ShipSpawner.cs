@@ -16,6 +16,8 @@ public class ShipSpawner : MonoBehaviour
     public float[] secondsElapsedForShipsLimitTier; // seconds to consider this limit, this array size must be the same as shipsLimit
     public float[]   secondsIntervalForEachShip;    // interval between ships spawning for this tier
 
+    public int currentTier; // for debugging
+
     private int getNdxForCurrentTier()
     {
         float now = Time.timeSinceLevelLoad;
@@ -32,6 +34,11 @@ public class ShipSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(ShipSpawnerRoutine());
+    }
+
+    void Update()
+    {
+        currentTier = getNdxForCurrentTier();
     }
 
     IEnumerator ShipSpawnerRoutine()
@@ -71,15 +78,30 @@ public class ShipSpawner : MonoBehaviour
         {
             case ShipDirection.North:
                 position = new Vector2(Random.Range(LowerLeftLimit.x + MarginOffset, UpperRightLimit.x - MarginOffset), UpperRightLimit.y);
+                while ((position.x > -4.3 && position.x < 1.5) || (position.x > 7.25 && position.x < 9.94) || (position.x > -9.4 && position.x < -2.2) || (position.x > 2.56 && position.x < 4.5))
+                {
+                    position = new Vector2(Random.Range(LowerLeftLimit.x + MarginOffset, UpperRightLimit.x - MarginOffset), UpperRightLimit.y);
+                }
                 break;
             case ShipDirection.South:
                 position = new Vector2(Random.Range(LowerLeftLimit.x + MarginOffset, UpperRightLimit.x - MarginOffset), LowerLeftLimit.y);
+                while ((position.x > -4.3 && position.x < 1.5) || (position.x > 7.25 && position.x < 9.94) || (position.x > -9.4 && position.x < -2.2) || (position.x > 2.56 && position.x < 4.5)) 
+                { 
+                    position = new Vector2(Random.Range(LowerLeftLimit.x + MarginOffset, UpperRightLimit.x - MarginOffset), LowerLeftLimit.y);
+                }
                 break;
             case ShipDirection.East:
                 position = new Vector2(UpperRightLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
+                while (position.y > 5.7 && position.y < 8.67) { 
+                    position = new Vector2(UpperRightLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
+                }
                 break;
             case ShipDirection.West:
                 position = new Vector2(LowerLeftLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
+                while (position.y > 5.7 && position.y < 8.67)
+                {
+                    position = new Vector2(LowerLeftLimit.x, Random.Range(LowerLeftLimit.y + MarginOffset, UpperRightLimit.y - MarginOffset));
+                }
                 break;
         }
 

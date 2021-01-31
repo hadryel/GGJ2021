@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour
         _Deaths = Deaths;
         Score = 0;
         ScoreUIText.text = Score.ToString();
+        DeathsUIText.text = (_Deaths).ToString();
 
         Onboarding.Restart();
     }
@@ -74,7 +75,7 @@ public class LevelManager : MonoBehaviour
     {
         _Deaths--;
 
-        DeathsUIText.text = (Deaths - _Deaths).ToString();
+        DeathsUIText.text = (_Deaths).ToString();
 
         if (_Deaths <= 0)
             LoseGame();
