@@ -162,6 +162,7 @@ public class Ship : MonoBehaviour
     {
         // TODO: Instantiate particles as well
         Instantiate(WreckagePrefab, transform.position, Quaternion.identity);
+        LevelManager.Instance.ReducePoint();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

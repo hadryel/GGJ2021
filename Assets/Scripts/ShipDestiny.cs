@@ -16,7 +16,7 @@ public class ShipDestiny : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("PLAYER SCORED A POINT");
+        LevelManager.Instance.ScorePoint();
         Destroy(collision.gameObject);
     }
 }
