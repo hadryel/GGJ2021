@@ -151,10 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14bf840900eb5241af1e9977a317c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RockPrefabs:
-  - {fileID: 8562729901864906831, guid: 0b1a6febe3b3531409efa1afdf761948, type: 3}
-  - {fileID: 8355826826973654544, guid: ae50255a0b5938a4da7e89698ba87cd5, type: 3}
-  - {fileID: 1718267114444783032, guid: 6643ed11ce66fb640a28179ea27728f4, type: 3}
+  Range: 1
 --- !u!4 &86363589
 Transform:
   m_ObjectHideFlags: 0
@@ -639,6 +636,90 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 38.5, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &514988639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 758133393107342396, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149092, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnSignal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051737086133149098, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939413210050013425, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578252633684138156, guid: 3c8c6811f8177054b8d2d8aa6945c4e5,
+        type: 3}
+      propertyPath: SoundInterval
+      value: 0.02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3c8c6811f8177054b8d2d8aa6945c4e5, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,10 +850,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 99771297}
   SmoothTime: 0.3
-  UpperLeftLimit: {x: -9.6, y: 5.4, z: 0}
   UpperRightLimit: {x: 9.6, y: 5.4, z: 0}
   LowerLeftLimit: {x: -9.6, y: -5.4, z: 0}
-  LowerRightLimit: {x: 9.6, y: -5.4, z: 0}
 --- !u!1 &569213444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1362,7 @@ MonoBehaviour:
   - {fileID: 6063114132882198528, guid: 194aa1ac86795aa46873044bd3a3313e, type: 3}
   - {fileID: 6063114132882198528, guid: 812235b6b2bedba468104b9c7d2ad30a, type: 3}
   - {fileID: 6063114132882198528, guid: e25454baf494600458d252b3c3bfdd3f, type: 3}
+  SpawnSignalPrefab: {fileID: 0}
 --- !u!4 &721093224
 Transform:
   m_ObjectHideFlags: 0
