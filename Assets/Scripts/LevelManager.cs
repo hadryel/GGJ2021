@@ -9,15 +9,17 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
 
     public int Deaths = 3;
-    public int Score = 0;
 
     int _Deaths;
     int _Score;
 
     public GameObject LosePanel;
 
-    public Text ScoreText;
+    public Text ScoreUIText;
+    public Text FinalScoreText;
     string SCORE_MESSAGE = "Saved {0} ships";
+
+    public Text DeathsUIText;
 
     void Start()
     {
@@ -33,7 +35,9 @@ public class LevelManager : MonoBehaviour
 
         _Deaths = Deaths;
         _Score = 0;
+        ScoreUIText.text = _Score.ToString();
     }
+
     void Update()
     {
         
@@ -48,12 +52,15 @@ public class LevelManager : MonoBehaviour
 
     public void ScorePoint()
     {
-        Score++;
+        _Score++;
+        ScoreUIText.text = _Score.ToString();
     }
 
     public void ReducePoint()
     {
         _Deaths--;
+
+        DeathsUIText.text = (Deaths - _Deaths).ToString();
 
         if (_Deaths <= 0)
             LoseGame();
@@ -61,7 +68,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoseGame()
     {
-        ScoreText.text = string.Format(SCORE_MESSAGE, _Score);
+        FinalScoreText.text = string.Format(SCORE_MESSAGE, _Score);
 
         LosePanel.SetActive(true);
         Time.timeScale = 0;
